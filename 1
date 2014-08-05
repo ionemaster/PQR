@@ -1,0 +1,27 @@
+local swarm, _, _, _, _, _, swarmtimer = UnitDebuffID("target", 5570, "PLAYER")
+local swarm2, _, _, _, _, _, swarmtimer2 = UnitDebuffID("Focus", 5570, "PLAYER")
+local swarm3, _, _, _, _, _, swarmtimer3 = UnitDebuffID("Mouseover", 5570, "PLAYER")
+local ISfocus = UnitDebuffID("Focus", 5570)
+local MO = UnitExists("Mouseover")
+
+if swarm ~= nil then
+	if swarmtimer - GetTime() < 4 then
+		CastSpellByID(5570, "Target")
+	end
+else
+	CastSpellByID(5570, "Target")
+end
+
+if ISfocus ~= nil then
+	if swarmtimer2 - GetTime() < 4 then
+		CastSpellByID(5570, "Focus")
+	end
+else
+	CastSpellByID(5570, "Focus")
+end
+
+if MO then
+	if swarm3 == nil then
+		CastSpellByID(5570, "Mouseover")
+	end
+end
